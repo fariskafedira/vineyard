@@ -1,7 +1,5 @@
 Nama    : Fariska Fedira Ardhanariswari
-
 NPM     : 2206815705
-
 Kelas   : PBP A
 
 > Membuat sebuah proyek Django baru.
@@ -54,24 +52,24 @@ Kelas   : PBP A
    - Centang bagian HTTP Listener on PORT lalu klik Deploy App.
 
 > Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
-    User mengirimkan request ke URL, kemudian berkas urls.py akan mencocokan permintaan user dengan pola URL yang sesuai dan mengarahkan ke views sesuai berkas views.py. Views akan menggunakan Model dalam berkas models.py untuk mengakses data yang diperlukan. Views akan me-render halaman HTML dengan template yang sesuai kemudian menggabungkan dengan data dari model ke halaman web. Halaman web akan dikirim kembali sebagai respon kepada user.
+   - User mengirimkan request ke URL, kemudian berkas urls.py akan mencocokan permintaan user dengan pola URL yang sesuai dan mengarahkan ke views sesuai berkas views.py. Views akan menggunakan Model dalam berkas models.py untuk mengakses data yang diperlukan. Views akan me-render halaman HTML dengan template yang sesuai kemudian menggabungkan dengan data dari model ke halaman web. Halaman web akan dikirim kembali sebagai respon kepada user.
 
 
 > Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
-    Kita tetap sapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment, tetapi tidak disarankan. Jika tidak menggunakan virtual environment terdapat risiko konflik dependencies. Virtual environment berguna untuk mengisolasi package serta dependencies dari aplikasi sehingga tidak bertabrakan dengan versi lain pada perangkat user.
+   - Kita tetap sapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment, tetapi tidak disarankan. Jika tidak menggunakan virtual environment terdapat risiko konflik dependencies. Virtual environment berguna untuk mengisolasi package serta dependencies dari aplikasi sehingga tidak bertabrakan dengan versi lain pada perangkat user.
 
 > Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
-    - MVC : Model View Controller
+   - MVC : Model View Controller
         - Model : Tempat menyimpan data dan informasi aplikasi.
         - View : Tampilan, menunjukkan informasi kepada pengguna. Seperti halaman web pengguna aplikasi.
         - Controller : Mengatur bagaimana permintaan pengguna ditangani. Penghubung antara View dan Model.
         Perbedaan : Cara mengorganisir kode dalam aplikasi agar mudah dimengerti, biasa digunakan dalam aplikasi berbasis desktop dan web.
-    - MVT : Model View Template
+   - MVT : Model View Template
         - Model : Tempat menyimpan data dan informasi aplikasi seperti pada MVC.
         - View : Tampilan yang menampilkan informasi kepada pengguna.
         - Template : Mengatur tampilan halaman web dan menentukan bagaimana data dari Model akan ditampilkan.
         Perbedaan : Varian dari MVC yang digunakan dalam kerangka Django, Template mengatur tampilan dalam halaman web dan menggabungkan dengan data dari Model.
-    - MVVM : Model View ViewModel
+   - MVVM : Model View ViewModel
         - Model : Tempat menyimpan data dan informasi aplikasi.
         - View : Tampilan yang menampilkan informasi kepada pengguna.
         - ViewModel : Penghubung antara Model dan View, mengelola tampilan data dari Model, dan menyediakan cara untuk berinteraksi dengan data tersebut.
