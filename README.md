@@ -21,12 +21,12 @@ Kelas   : PBP A
    - Daftarkan aplikasi main tersebut ke dalam proyek dengan menambahkan "main" pada variabel INSTALLED-APPS di berkas settings.py
 
 > Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
-    - Mengubah berkas models.py untuk mendefinisikan model yang baru.
-    - Impor modul models dari django.db sebagai modul untuk membantu mendefinisikan model basis data untuk aplikasi.
-    - Sertakan class Product (models.Model) sebagai kelas dasar untuk mendefinisikan model dalam Django.
-    - Isi berkas models.py dengan atribut dan definisikan dengan tipe data yang sesuai seperti name dengan tipe CharField, amount dengan tipe IntegerField, dan description dengan tipe TextField.
-    - Lakukan migrasi model untuk melihat perubahan pada model basis data yang didefinisikan. Buat migrasi model dengan menjalankan perintah "python manage.py makemigrations".
-    - Aplikasikan perubahan model dengan perintah "python manage.py migrate".
+   - Mengubah berkas models.py untuk mendefinisikan model yang baru.
+   - Impor modul models dari django.db sebagai modul untuk membantu mendefinisikan model basis data untuk aplikasi.
+   - Sertakan class Product (models.Model) sebagai kelas dasar untuk mendefinisikan model dalam Django.
+   - Isi berkas models.py dengan atribut dan definisikan dengan tipe data yang sesuai seperti name dengan tipe CharField, amount dengan tipe IntegerField, dan description dengan tipe TextField.
+   - Lakukan migrasi model untuk melihat perubahan pada model basis data yang didefinisikan. Buat migrasi model dengan menjalankan perintah "python manage.py makemigrations".
+   - Aplikasikan perubahan model dengan perintah "python manage.py migrate".
 
 >  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
    - Impor render dari django.shortcuts untuk me-render tampilan HTML sesuai dengan data yang diberikan.
