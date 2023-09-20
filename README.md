@@ -7,73 +7,76 @@ NPM     : 2206815705
 Kelas   : PBP A
 
 ## Tugas 3
-> Membuat input form untuk menambahkan objek model pada app sebelumnya.
+
+### Membuat input form untuk menambahkan objek model pada app sebelumnya.
    - Membuat sebuah berkas dengan nama `forms.py` untuk membuat struktur form sebagai input data produk baru pada aplikasi.
-   - Lakukan impor `ModelForm` dari modul forms pada Django, ini digunakan untuk mempermudah proses pembuatan form untuk interaksi dengan data dalam `Product`.
+   - Lakukan impor ModelForm dari modul forms pada Django, ini digunakan untuk mempermudah proses pembuatan form untuk interaksi dengan data dalam Product.
    - Impor Product dari modul main.models, ini menunjukkan Product digunakan dalam form yang akan dibuat.
    - Definisikan kelas ProductForm yang merupakan turunan dari ModelForm.
    - Buat nested class, class Meta, untuk menentukan atribut yang akan digunakan.
-   - Hubungkan form ProductForm dengan model Product, dengan menambahkan 'model = Product', form akan menggunakan definisi model Product sebagai dasar untuk membuat input fields.
-   - Tambahkan 'fields = ["name", "amount", "description"]'. Fields digunakan untuk menentukan kolom dari form yang akan berisi field "nama", "amount", dan "description".
-   - Pada berkas views.py tambahkan beberapa impor berikut:
-      - from django.http import HttpResponseRedirect
-      - from main.forms import ProductForm
-      - from django.urls import reverse
-   - Buat fungsi 'create_product' dengan parameter 'request', yaitu permintaan HTTP yang dikirim user ke server.
-   - Tambahkan 'form = ProductForm(request.POST or None)' untuk membuat ProductForm baru dengan memasukkan QueryDict berdasarkan input user pada request.POST.
-   - 'if form.is_valid() and request.method == "POST":', digunakan untuk memvalidasi isi input form dan *request* dikirimkan menggunakan metode POST.
-   - 'form.save()' digunakan untuk membuat dan menyimpan data dari form tersebut.
-   - 'return HttpResponseRedirect(reverse('main:show_main'))" untuk melakukan *redirect* setelah data form berhasil disimpan.
-   - 'context = {'form': form}' dijalankan apabila input form tidak valid atau *request* tidak menggunakan POST, maka objek 'form' akan disertakan dalam 'context'.
-   - 'return render(request, "create_product.html", context)', me-*render* halaman HTML.
-   - Tambahkan 'Product.abjects.all()' pada fungsi show_main pada berkas 'views.py' untuk mengambil seluruh object Product yang tersimpan pada *database*.
-   - Impor fungsi 'create_product' pada berkas 'urls.py'.
-   - Tambahkan *path url* 'path('create-product', create_product, name='create_product'),' untuk mengakses fungsi yang sudah diimpor sebelumnya.
-   - Buat berkas HTML dengan nama 'create_product.html' pada direktori 'main/templates'.
-   - Pada berkas tersebut isi dengan '{% extends 'base.html' %}', untuk mengindikasikan template ini meng-*extend* dari 'base.html'.
-   - '<form method="POST">' untuk menunjukkan data dari form dikirim dengan metode POST.
-   - '{% csrf_token %}' token di-*generate* secara otomatis dari Django yang berfungsi sebagai *security*.
-   - '{{ form.as_table }}' untuk menampilakan *fields* form yang sudah dibuat sebagai *table*.
-   - '<input type="submit" value="Add Product"/>' sebagai tombol *submit* untuk mengirimkan *request* ke *view*.
-   - Pada main.html tambahkan komponen-komponen lain yang ingin ditambahkan dan sertakan tombol 'Add New product' yang akan 'redirect' ke halaman form.
-> Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+   - Hubungkan form ProductForm dengan model Product, dengan menambahkan `model = Product`, form akan menggunakan definisi model Product sebagai dasar untuk membuat input fields.
+   - Tambahkan `fields = ["name", "amount", "description"]`. Fields digunakan untuk menentukan kolom dari form yang akan berisi field `nama`, `amount`, dan `description`.
+   
+### Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
    - Format HTML
-      - 
+      - Pada berkas views.py tambahkan beberapa impor berikut:
+         - from django.http import HttpResponseRedirect
+         - from main.forms import ProductForm
+         - from django.urls import reverse
+      - Buat fungsi `create_product` dengan parameter `request`, yaitu permintaan HTTP yang dikirim user ke server.
+      - Tambahkan `form = ProductForm(request.POST or None)` untuk membuat ProductForm baru dengan memasukkan QueryDict berdasarkan input user pada request.POST.
+      - `if form.is_valid() and request.method == "POST":`, digunakan untuk memvalidasi isi input form dan *request* dikirimkan menggunakan metode POST.
+      - `form.save()` digunakan untuk membuat dan menyimpan data dari form tersebut.
+      - `return HttpResponseRedirect(reverse('main:show_main'))` untuk melakukan *redirect* setelah data form berhasil disimpan.
+      - `context = {'form': form}` dijalankan apabila input form tidak valid atau *request* tidak menggunakan POST, maka objek 'form' akan disertakan dalam 'context'.
+      - `return render(request, "create_product.html", context)`, me-*render* halaman HTML.
+      - Tambahkan `Product.abjects.all()` pada fungsi show_main pada berkas 'views.py' untuk mengambil seluruh object Product yang tersimpan pada *database*.
+      - Impor fungsi `create_product` pada berkas 'urls.py'.
+      - Tambahkan *path url* `path('create-product', create_product, name='create_product'),` untuk mengakses fungsi yang sudah diimpor sebelumnya.
+      - Buat berkas HTML dengan nama `create_product.html` pada direktori `main/templates`.
+      - Pada berkas tersebut isi dengan `{% extends 'base.html' %}`, untuk mengindikasikan template ini meng-*extend* dari `base.html`.
+      - `<form method="POST">` untuk menunjukkan data dari form dikirim dengan metode POST.
+      - `{% csrf_token %}` token di-*generate* secara otomatis dari Django yang berfungsi sebagai *security*.
+      - `{{ form.as_table }}` untuk menampilakan *fields* form yang sudah dibuat sebagai *table*.
+      - `<input type="submit" value="Add Product"/`' sebagai tombol *submit* untuk mengirimkan *request* ke *view*.
+      - Pada main.html tambahkan komponen-komponen lain yang ingin ditambahkan dan sertakan tombol `Add New product` yang akan *redirect* ke halaman form.
 
    - Format XML
       - Pada berkas views.py, impor HttpResponse dan Serializer.
-      - Buat sebuah fungsi 'show_xml' dengan parameter *request*.
-      - Simpan 'data = Product.objects.all()' pada sebuah variabel sebagai tempat menyimpan hasil *query* dari data yang ada pada 'Product'.
-      - Tambahkan 'return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")' sebagai *return function* berupa 'HttpResponse' dengan parameter data hasil *query* yang sudah diserialisasi menjadi XML.
-      - Impor fungsi 'show_xml' pada berkas 'urls.py'.
-       - Tambahkan *path url* 'path('xml/', show_xml, name='show_xml'),' untuk mengakses fungsi yang sudah diimpor sebelumnya.
+      - Buat sebuah fungsi `show_xml` dengan parameter *request*.
+      - Simpan `data = Product.objects.all()` pada sebuah variabel sebagai tempat menyimpan hasil *query* dari data yang ada pada `Product`.
+      - Tambahkan `return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")` sebagai *return function* berupa `HttpResponse` dengan parameter data hasil *query* yang sudah diserialisasi menjadi XML.
+      - Impor fungsi `show_xml` pada berkas `urls.py`.
+       - Tambahkan *path url* `path('xml/', show_xml, name='show_xml'),` untuk mengakses fungsi yang sudah diimpor sebelumnya.
 
    - Format JSON
       - Lakukan hal yang sama seperti pada format xml, namun diubah dengan json.
-      - Buat fungsi 'show_json' yang diisi dengan 'data = Product.objects.all()' lalu me-*return* 'return HttpResponse(serializers.serialize("json", data), content_type="application/json")'
-      - Impor fungsi 'show_json' pada berkas 'urls.py'.
-       - Tambahkan *path url* 'path('json/', show_json, name='show_json'),' untuk mengakses fungsi yang sudah diimpor sebelumnya.
+      - Buat fungsi `show_json` yang diisi dengan `data = Product.objects.all()` lalu me-*return* `return HttpResponse(serializers.serialize("json", data), content_type="application/json")`
+      - Impor fungsi `show_json` pada berkas `urls.py`.
+       - Tambahkan *path url* `path('json/', show_json, name='show_json'),` untuk mengakses fungsi yang sudah diimpor sebelumnya.
 
    - Format XML by ID
-      - Lakukan hal yang sama seperti pada format xml, namun ubah variabel data dengan 'data = Product.objects.filter(pk=id)' untuk memberi filter menggunakan ID.
-      - Buat fungsi 'show_xml_by_id' yang diisi dengan 'data = Product.objects.filter(pk=id)' lalu me-*return* 'return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")'
-      - Impor fungsi 'show_xml_by_id' pada berkas 'urls.py'.
-       - Tambahkan *path url* 'path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),' untuk mengakses fungsi yang sudah diimpor sebelumnya.
+      - Lakukan hal yang sama seperti pada format xml, namun ubah variabel data dengan `data = Product.objects.filter(pk=id)` untuk memberi filter menggunakan ID.
+      - Buat fungsi `show_xml_by_id` yang diisi dengan `data = Product.objects.filter(pk=id)` lalu me-*return* `return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")`
+      - Impor fungsi `show_xml_by_id` pada berkas `urls.py`.
+       - Tambahkan *path url* `path('xml/<int:id>/, show_xml_by_id, name='show_xml_by_id'),` untuk mengakses fungsi yang sudah diimpor sebelumnya.
       
    - Format XML by ID
       - Lakukan hal yang sama seperti pada format xml, namun diubah dengan json.
-      - Buat fungsi 'show_json_by_id' yang diisi dengan 'data = Product.objects.filter(pk=id)' lalu me-*return* 'return HttpResponse(serializers.serialize("json", data), content_type="application/json")'
-      - Impor fungsi 'show_json_by_id' pada berkas 'urls.py'.
-      - Tambahkan *path url* 'path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),' untuk mengakses fungsi yang sudah diimpor sebelumnya.
+      - Buat fungsi `show_json_by_id` yang diisi dengan `data = Product.objects.filter(pk=id)` lalu me-*return* `return HttpResponse(serializers.serialize("json", data), content_type="application/json")`
+      - Impor fungsi `show_json_by_id` pada berkas `urls.py`.
+      - Tambahkan *path url* `path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),` untuk mengakses fungsi yang sudah diimpor sebelumnya.
 
-> Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+### Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
    - Untuk setiap fungsi format pada poin 2, impor fungsi pada berkas 'urls.py', kemudian tambahkan *path url* dengan format dibawah ini:
-      - 'path('xml/', show_xml, name='show_xml'),'
-      - 'path('json/', show_json, name='show_json'),'
-      - 'path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),'
-      - 'path('json/<int:id>/', show_json_by_id, name='show_json_by_id')'
+      ```python
+         'path('xml/', show_xml, name='show_xml'),'
+         'path('json/', show_json, name='show_json'),'
+         'path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),'
+         'path('json/<int:id>/', show_json_by_id, name='show_json_by_id')'
+      ```
 
-> Apa perbedaan antara form POST dan form GET dalam Django?
+### Apa perbedaan antara form POST dan form GET dalam Django?
    - POST
       - Method POST akan mnegirim data/nilai langsung ke action untuk disimpan, tanpa menampilkannya pada url.
       - Data yang dikirim tidak memiliki batas.
@@ -82,7 +85,7 @@ Kelas   : PBP A
       - Method GET akan menampilkan data/nilai pada url, kemudian ditampung oleh action.
       - Data tidak boleh lebih dari 2047 karakter.
 
-> Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+### Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
    - XML
       - Digunakan untuk menyimpan dan mengirim data terstruktur, seperti konfigurasi dan pertukaran data antar aplikasi.
       - Memiliki struktur yang fleksibel dan dapat mendefinisikan tipe data yang kompleks, menggunakan tag.
@@ -98,14 +101,14 @@ Kelas   : PBP A
       - Digunakan untuk mengatur tampilan dan konten halaman web, presentasi dan interaksi pengguna.
       - Ukuran file tergantung kompleksitas halaman web.
 
-> Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+### Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
    - Format JSON ringkas dan mudah dibaca.
    - Ukuran file JSON kecil, mengurangi beban jaringan.
    - JSON didukung dengan banyak bahasa pemrograman, sehingga mudah digunakan diberbagai platform.
    - Struktur data yang terurut, dapat menggambarkan data kompleks dengan objek dan array.
    - Didukung oleh browser web modern melalui JavaScript. 
 
-> Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+### Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 
 1. HTML
    ![html](html.png)
@@ -124,6 +127,7 @@ Kelas   : PBP A
 
 
 ## Tugas 2
+
 > Membuat sebuah proyek Django baru.
    - Membuat direktori sebagai tempat menyimpan proyek Git dan membuat repositori baru untuk mengelola proyek sesuai ketentuan dan diberi nama sesuai keinginan.
    - Menghubungkan repositori lokal dengan repositori pada GitHub.
