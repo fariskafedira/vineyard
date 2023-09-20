@@ -133,12 +133,12 @@ Kelas   : PBP A
    - Daftarkan aplikasi main tersebut ke dalam proyek dengan menambahkan "main" pada variabel INSTALLED-APPS di berkas settings.py
 
 > Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
-    - Mengubah berkas models.py untuk mendefinisikan model yang baru.
-    - Impor modul models dari django.db sebagai modul untuk membantu mendefinisikan model basis data untuk aplikasi.
-    - Sertakan class Product (models.Model) sebagai kelas dasar untuk mendefinisikan model dalam Django.
-    - Isi berkas models.py dengan atribut dan definisikan dengan tipe data yang sesuai seperti name dengan tipe CharField, amount dengan tipe IntegerField, dan description dengan tipe TextField.
-    - Lakukan migrasi model untuk melihat perubahan pada model basis data yang didefinisikan. Buat migrasi model dengan menjalankan perintah "python manage.py makemigrations".
-    - Aplikasikan perubahan model dengan perintah "python manage.py migrate".
+   - Mengubah berkas models.py untuk mendefinisikan model yang baru.
+   - Impor modul models dari django.db sebagai modul untuk membantu mendefinisikan model basis data untuk aplikasi.
+   - Sertakan class Product (models.Model) sebagai kelas dasar untuk mendefinisikan model dalam Django.
+   - Isi berkas models.py dengan atribut dan definisikan dengan tipe data yang sesuai seperti name dengan tipe CharField, amount dengan tipe IntegerField, dan description dengan tipe TextField.
+   - Lakukan migrasi model untuk melihat perubahan pada model basis data yang didefinisikan. Buat migrasi model dengan menjalankan perintah "python manage.py makemigrations".
+   - Aplikasikan perubahan model dengan perintah "python manage.py migrate".
 
 >  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
    - Impor render dari django.shortcuts untuk me-render tampilan HTML sesuai dengan data yang diberikan.
@@ -164,11 +164,17 @@ Kelas   : PBP A
    - Centang bagian HTTP Listener on PORT lalu klik Deploy App.
 
 > Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+<<<<<<< HEAD
    - User mengirimkan request ke URL, kemudian berkas urls.py akan mencocokan permintaan user dengan pola URL yang sesuai dan mengarahkan ke views sesuai berkas views.py. Views akan menggunakan Model dalam berkas models.py untuk mengakses data yang diperlukan. Views akan me-render halaman HTML dengan template yang sesuai kemudian menggabungkan dengan data dari model ke halaman web. Halaman web akan dikirim kembali sebagai respon kepada user.
    ![bagan](bagan.jpg)
+=======
+![IMG_0983](https://github.com/fariskafedira/vineyard/assets/124940876/e15cb7a5-ba81-4a9f-a472-19bea0e68136)
+- User mengirimkan request ke URL, kemudian berkas urls.py akan mencocokan permintaan user dengan pola URL yang sesuai dan mengarahkan ke views sesuai berkas views.py. Views akan menggunakan Model dalam berkas models.py untuk mengakses data yang diperlukan. Views akan me-render halaman HTML dengan template yang sesuai kemudian menggabungkan dengan data dari model ke halaman web. Halaman web akan dikirim kembali sebagai respon kepada user.
+
+>>>>>>> 7009eb7cf938fd63c97e3ad00c6c9c434070592f
 
 > Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
-   - Kita tetap sapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment, tetapi tidak disarankan. Jika tidak menggunakan virtual environment terdapat risiko konflik dependencies. Virtual environment berguna untuk mengisolasi package serta dependencies dari aplikasi sehingga tidak bertabrakan dengan versi lain pada perangkat user.
+- Kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment, tetapi tidak disarankan. Jika tidak menggunakan virtual environment terdapat risiko konflik dependencies. Virtual environment berguna untuk mengisolasi package serta dependencies dari aplikasi sehingga tidak bertabrakan dengan versi lain pada perangkat user.
 
 > Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
    - MVC : Model View Controller
