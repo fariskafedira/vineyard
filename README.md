@@ -7,9 +7,9 @@ NPM     : 2206815705
 Kelas   : PBP A
 
 <details>
-<summary> Tugas 2 </summary>
+<summary> **Tugas 2** </summary>
 
-#### Membuat sebuah proyek Django baru.
+### Membuat sebuah proyek Django baru.
    - Membuat direktori sebagai tempat menyimpan proyek Git dan membuat repositori baru untuk mengelola proyek sesuai ketentuan dan diberi nama sesuai keinginan.
    - Menghubungkan repositori lokal dengan repositori pada GitHub.
    - Membuat virtual environment dengan menjalankan perintah "python -m venv env" pada terminal.
@@ -20,14 +20,14 @@ Kelas   : PBP A
    - Mengonfigurasi proyek dan menjalankan server dengan menambahkan "*" pada ALLOWED_HOSTS di settings.py untuk memberi akses pada semua host.
    - Memastikan berkas manage.py aktif dengan menjalankan server Django dengan perintah "python manage.py runserver" kemudian cek pada peramban web "http://localhost:8000" untuk mengetahui aplikasi yang dibuat berhasil.
 
-#### Membuat aplikasi dengan nama main pada proyek tersebut.
+### Membuat aplikasi dengan nama main pada proyek tersebut.
    - Aktifkan virtual environment yang telah dibuat sesuai perintah di atas.
    - Buat aplikasi baru bernama main dengan menjalankan perintah "python manage.py startapp main" untuk memberi struktur awal dan aplikasi tersebut.
 
-#### Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
+### Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
    - Daftarkan aplikasi main tersebut ke dalam proyek dengan menambahkan "main" pada variabel INSTALLED-APPS di berkas settings.py
 
-#### Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
+### Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
    - Mengubah berkas models.py untuk mendefinisikan model yang baru.
    - Impor modul models dari django.db sebagai modul untuk membantu mendefinisikan model basis data untuk aplikasi.
    - Sertakan class Product (models.Model) sebagai kelas dasar untuk mendefinisikan model dalam Django.
@@ -35,20 +35,20 @@ Kelas   : PBP A
    - Lakukan migrasi model untuk melihat perubahan pada model basis data yang didefinisikan. Buat migrasi model dengan menjalankan perintah "python manage.py makemigrations".
    - Aplikasikan perubahan model dengan perintah "python manage.py migrate".
 
-####  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
+###  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
    - Impor render dari django.shortcuts untuk me-render tampilan HTML sesuai dengan data yang diberikan.
    - Membuat fungsi show_main dengan parameter request untuk mengatur permintaan HTTP dan mengembalikan tampilan yang sesuai.
    - Melengkapi "context" pada fungsi show_main yaitu dictionary yang berisi data untuk ditampilkan.
    - Fungsi show_main menggunakan return render(request, "main.html", context) untuk me-render tampilan main.html dengan menggunakan fungsi render.
 
-#### Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
+### Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
    - Melakukan routing pada proyek agar aplikasi main dapat diakses melalui peramban web.
    - Membuat berkas urls.py di dalam direktiri main untuk mengatur rute URL yang terkait dengan aplikasi main.
    - Melakukan impor path dari django.urls untuk mendefinisikan pola URL dan menggunakan fungsi show_main dari modul main.views sebagai tampilan ketika URL diakses.
    - Mengonfigurasi routing URL proyek dengan mengimpor fungsi include dari django.urls untuk mengimpor rute URL dari aplikasi main ke dalam berkas urls.py.
    - Tambahkan path URL "main/" untuk mengarahkan rute pada aplikasi main.
 
-#### Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
+### Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
    - Login Adaptable dengan menggunakan akun GitHub.
    - Sambungkan GitHub dengan repositori yang ingin di-deploy.
    - Tekan tombol New App -> Connect an Existing Repository -> pilih proyek "Vineyard" sebagai basis aplikasi yang ingin di-deploy.
@@ -58,15 +58,15 @@ Kelas   : PBP A
    - Isi nama aplikasi dengan "vineyard".
    - Centang bagian HTTP Listener on PORT lalu klik Deploy App.
 
-#### Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+### Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
    - User mengirimkan request ke URL, kemudian berkas urls.py akan mencocokan permintaan user dengan pola URL yang sesuai dan mengarahkan ke views sesuai berkas views.py. Views akan menggunakan Model dalam berkas models.py untuk mengakses data yang diperlukan. Views akan me-render halaman HTML dengan template yang sesuai kemudian menggabungkan dengan data dari model ke halaman web. Halaman web akan dikirim kembali sebagai respon kepada user.
 
    ![bagan](bagan.jpg)
    
-#### Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
+### Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 - Kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment, tetapi tidak disarankan. Jika tidak menggunakan virtual environment terdapat risiko konflik dependencies. Virtual environment berguna untuk mengisolasi package serta dependencies dari aplikasi sehingga tidak bertabrakan dengan versi lain pada perangkat user.
 
-#### Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+### Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
    - MVC : Model View Controller
         - Model : Tempat menyimpan data dan informasi aplikasi.
         - View : Tampilan, menunjukkan informasi kepada pengguna. Seperti halaman web pengguna aplikasi.
@@ -85,9 +85,9 @@ Kelas   : PBP A
 </details>
 
 <details>
-<summary> Tugas 3 </summary>
+<summary> **Tugas 3** </summary>
 
-#### Membuat input form untuk menambahkan objek model pada app sebelumnya.
+### Membuat input form untuk menambahkan objek model pada app sebelumnya.
    - Membuat sebuah berkas dengan nama `forms.py` untuk membuat struktur form sebagai input data produk baru pada aplikasi.
    - Lakukan impor ModelForm dari modul forms pada Django, ini digunakan untuk mempermudah proses pembuatan form untuk interaksi dengan data dalam Product.
    - Impor Product dari modul main.models, ini menunjukkan Product digunakan dalam form yang akan dibuat.
@@ -96,7 +96,7 @@ Kelas   : PBP A
    - Hubungkan form ProductForm dengan model Product, dengan menambahkan `model = Product`, form akan menggunakan definisi model Product sebagai dasar untuk membuat input fields.
    - Tambahkan `fields = ["name", "amount", "description"]`. Fields digunakan untuk menentukan kolom dari form yang akan berisi field `nama`, `amount`, dan `description`.
    
-#### Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+### Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
    - Format HTML
       - Pada berkas views.py tambahkan beberapa impor berikut:
          - from django.http import HttpResponseRedirect
@@ -146,7 +146,7 @@ Kelas   : PBP A
       - Impor fungsi `show_json_by_id` pada berkas `urls.py`.
       - Tambahkan *path url* `path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),` untuk mengakses fungsi yang sudah diimpor sebelumnya.
 
-#### Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+### Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
    - Untuk setiap fungsi format pada poin 2, impor fungsi pada berkas 'urls.py', kemudian tambahkan *path url* dengan format dibawah ini:
       ```python
          'path('xml/', show_xml, name='show_xml'),'
@@ -155,7 +155,7 @@ Kelas   : PBP A
          'path('json/<int:id>/', show_json_by_id, name='show_json_by_id')'
       ```
 
-#### Apa perbedaan antara form POST dan form GET dalam Django?
+### Apa perbedaan antara form POST dan form GET dalam Django?
    - POST
       - Method POST akan mnegirim data/nilai langsung ke action untuk disimpan, tanpa menampilkannya pada url.
       - Data yang dikirim tidak memiliki batas.
@@ -164,7 +164,7 @@ Kelas   : PBP A
       - Method GET akan menampilkan data/nilai pada url, kemudian ditampung oleh action.
       - Data tidak boleh lebih dari 2047 karakter.
 
-#### Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+### Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
    - XML
       - Digunakan untuk menyimpan dan mengirim data terstruktur, seperti konfigurasi dan pertukaran data antar aplikasi.
       - Memiliki struktur yang fleksibel dan dapat mendefinisikan tipe data yang kompleks, menggunakan tag.
@@ -180,14 +180,14 @@ Kelas   : PBP A
       - Digunakan untuk mengatur tampilan dan konten halaman web, presentasi dan interaksi pengguna.
       - Ukuran file tergantung kompleksitas halaman web.
 
-#### Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+### Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
    - Format JSON ringkas dan mudah dibaca.
    - Ukuran file JSON kecil, mengurangi beban jaringan.
    - JSON didukung dengan banyak bahasa pemrograman, sehingga mudah digunakan diberbagai platform.
    - Struktur data yang terurut, dapat menggambarkan data kompleks dengan objek dan array.
    - Didukung oleh browser web modern melalui JavaScript. 
 
-#### Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+### Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 
 1. HTML
    ![html](html.png)
@@ -205,12 +205,11 @@ Kelas   : PBP A
    ![show_json_by_id](jsonbyid.png)
 </details>
 
-<details>
-<summary> Tugas 4 </summary>
+## Tugas 4
 
-#### Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+### Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
 
-##### Registrasi
+#### Registrasi
    - Tambahkan import `redirect`, `UserCreationForm`, `messages` pada berkas `views.py`.
       ```python
       from django.shortcuts import redirect
@@ -281,7 +280,7 @@ Kelas   : PBP A
       path('register/', register, name='register'),
       ```
 
-##### Login
+#### Login
    - Pada berkas `views.py` dalam subdirektori `main` tambahkan impor `authenticate` dan `login`.
       ```python
       from django.contrib.auth import authenticate, login
@@ -358,7 +357,7 @@ Kelas   : PBP A
       ...
       ```
 
-##### Logout
+#### Logout
    - Buka `views.py` kemudian tambahkan impor `logout`.
    - Buat fungsi dengan nama `logout_user` dengan parameter `request` untuk melakukan mekanisme logout.
       ```python
@@ -384,7 +383,7 @@ Kelas   : PBP A
       path('logout/', logout_user, name='logout'),
       ...
       ```
-#### Menghubungkan model `Item` dengan `User`.
+### Menghubungkan model `Item` dengan `User`.
    Step ini dilakukan agar setiap pengguna yang sedang terotorisasi hanya melihat produk-produk yang telah dibuatnya sendiri.
    - Pada berkas `models.py` yang ada di subdirektori `main` impor User.
       ```python
@@ -429,7 +428,7 @@ Kelas   : PBP A
    - Saat muncul error pilih 1 untuk menetapkan default value untuk field user pada semua row yang telah dibuat, kemudian pilih 1 lagi untuk menetapkan user dengan ID 1.
    - Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi.
 
-#### Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan `cookies` seperti `last login` pada halaman utama aplikasi.
+### Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan `cookies` seperti `last login` pada halaman utama aplikasi.
    - Impor `HttpResponseRedirect`, `reverse`, dan `datetime` pada berkas `views.py` pada subdirektori `main`.
       ```python
       import datetime
@@ -461,7 +460,7 @@ Kelas   : PBP A
          - `response.delete_cookie('last_login')` berfungsi untuk menghapus *cookie* `last_login` saat pengguna melakukan *logout* akun.
       - Tambahkan kode berikut pada `main.html` untuk menampilkan data *last login*.
 
-#### Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?
+### Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?
    - `UserCreationForm` adalah formulir bawaan yang dapat digunakan untuk memudahkan pembuatan formulir pendaftaran pengguna dalam aplikasi web. Dengan formulir ini, pengguna baru dapat membuat akun baru dengan mengisi informasi seperti nama, kata sandi, dan data lainnya dengan mudah di situs web tanpa harus menulis kode dari awal.
    - Kelebihan:
       - Mudah digunakan: disediakan olehh Django sebagai kerangka kerja agar tidak harus membuat kode *form* pendaftaran dari awal.
@@ -472,14 +471,14 @@ Kelas   : PBP A
       - Penanganan kesalahan tambahan: Meskipun sudah terdapat validasi bawaan, masih perlu penambahan penanganan kesalahan yang sesuai jika pengguna gagal daftar.
       - Tidak mendukung pendaftaran sosial media: Dirancang hanya untuk pendaftaran dengan *username* dan kata sandi, perlu menambahkan integrasi tambahan untuk *login* melalui media sosial lain.
 
-#### Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+### Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
    - Autentikasi adalah proses memverifikasi identitas pengguna, memastikan bahwa pengguna yang berusaha masuk (*login*) adalah orang yang sebenarnya.
    - Otorisasi adalah proses yang menentukan apa saja hal yang dapat diakses oleh pengguna setelah mereka berhasil diautentikasi.
    - Keduanya menjadi penting karena autentikasi memastikan bahwa hanya pengguna yang diizinkan yang dapat masuk ke dalam aplikasi. Sedangkan Otorisasi memastikan pengguna hanya memiliki akses ke fitur/data yang diizinkan. Hal ini membantu melindungi data dan mencegah pengguna yang tidak diizinkan untuk melakukan tindakan yang tidak seharusnya.
 
-#### Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+### Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
    - Cookies adalah bagian data yang disimpan di sisi *client* oleh server web. Cookies digunakan untuk menyimpan informasi yang dapat digunakan untuk mengidentifikasi dan melacak pengguna saat mereka berinteraksi dengan situs web.
    - Django memerlukan proses yang disebut *holding state* agar saat pengguna pindah halaman dari halaman A ke halaman B pada web yang sama, ia tidak diminta untuk melakukan login kembali. Untuk melakukan *holding state* diperlukan sebuah teknik, yaitu *cookie* dan *session*. Cara melakukan *holding state* yaitu dengan menggunakan *session ID* yang disimpan sebagai *cookie* pada komputer *client*. *Session ID* adalah token untuk mengenali *session* yang unik pada web. Session ID kemudian akan dipetakan ke suatu struktur data pada sisi web server. Cookie memiliki kapasitas maksimal 4 KB dan memiliki waktu hidup yang dapat dikonfigurasi, tidak seperti sesi yang memiliki waktu hidup lebih singkat yaitu sampai pengguna keluar/sesi berakhir.
 
-#### Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+### Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
    - Pada penggunaan cookies dalam pengembangan web, tetap ada risiko potensial yang harus diwaspadai seperti pencurian data pengguna. Jika sebuah data penting seperti kata sandi atau informasi keuangan disimpan dalam cookies tanpa enkripsi yang memadai, akan menjadi target pencurian data oleh pihak yang tidak bertanggung jawab. Selain itu, ada juga yang disebut dengan serangan CSRF, yaitu jenis serangan keamanan siber berupa penipuan atau pemalsuan permintaan ke sebuah website melalui website yang sedang pengguna digunakan secara tidak sadar. Serangan ini memanfaatkan pengguna yang sudah login ke suatu situs dan masih memiliki sesi atau kredensial otentifikasi yang masih berlaku.
