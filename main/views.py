@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from main.forms import ProductForm
 from django.urls import reverse
@@ -85,3 +85,29 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def add_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    if request.method == "GET" :
+        product.amount += 1
+        product.save()
+        messages.success(request, product.name + '  has been successfully added!')
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def remove_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    if request.method == "GET" :
+        if product.amount == 1 :
+            product.delete()
+        if product.amount > 1 :
+            product.amount -= 1
+            product.save()
+        messages.success(request, product.name + ' has been successfully reduced!')
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    if request.method == "GET" :
+        product.delete()
+        messages.success(request, product.name + ' has been successfully deleted!')        
+    return HttpResponseRedirect(reverse('main:show_main'))

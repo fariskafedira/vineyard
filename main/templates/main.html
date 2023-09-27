@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Vineyard Page</h1>
+    <h1>Vineyard</h1>
 
     <h5>Name:</h5>
     <p>{{name}}</p>
@@ -23,11 +23,39 @@
             <td>{{product.name}}</td>
             <td>{{product.amount}}</td>
             <td>{{product.description}}</td>
+            <td> <a href="{% url 'main:add_product' product.id %}">
+                <button>
+                    Add
+                </button>
+            </a>
+        </td>
+
+        <td> <a href="{% url 'main:remove_product' product.id %}">
+                <button>
+                    Reduce
+                </button>
+            </a>
+        </td>   
+        
+        <td> <a href="{% url 'main:delete_product' product.id %}">
+                <button>
+                    Delete Product
+                </button>
+            </a>
+        </td>
         </tr>
     {% endfor %}
 </table>
 
 <br />
+
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
