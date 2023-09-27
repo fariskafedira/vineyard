@@ -7,7 +7,7 @@ NPM     : 2206815705
 Kelas   : PBP A
 
 <details>
-<summary> **Tugas 2** </summary>
+<summary><b> Tugas 2 <b></summary>
 
 ### Membuat sebuah proyek Django baru.
    - Membuat direktori sebagai tempat menyimpan proyek Git dan membuat repositori baru untuk mengelola proyek sesuai ketentuan dan diberi nama sesuai keinginan.
@@ -85,7 +85,7 @@ Kelas   : PBP A
 </details>
 
 <details>
-<summary> **Tugas 3** </summary>
+<summary><b> Tugas 3 <b></summary>
 
 ### Membuat input form untuk menambahkan objek model pada app sebelumnya.
    - Membuat sebuah berkas dengan nama `forms.py` untuk membuat struktur form sebagai input data produk baru pada aplikasi.
