@@ -491,7 +491,7 @@ Kelas   : PBP A
    - Selector Universal (*)
       Untuk memilih semua elemen dalam dokumen HTML,jika ingin mengatur nilai default untuk semua elemen.
    - Selector Elemen
-      Memilih elemen berdasarkan jenis elemennya (<p>, <h1>, <div>), Mengganti atau menyesuaikan gaya elemen secara global berdasarkan tipe elemen.
+      Memilih elemen berdasarkan jenis elemennya (`<p>, <h1>, <div>`), Mengganti atau menyesuaikan gaya elemen secara global berdasarkan tipe elemen.
    - Selector Kelas (.nama-kelas)
       Memilih berdasarkan nama kelas yang diberikan, untuk mengganti atau menyesuaikan gaya elemen yang memiliki kelas tertentu.
    - Selector ID (#id-elemen)
@@ -530,7 +530,7 @@ Kelas   : PBP A
       - Fungsi margin adalah untuk mengontrol jarak antara elemen dengan elemen lain di sekitarnya, sehingga mempengaruhi tata letak keseluruhan elemen.
       - Margin biasanya tidak memiliki latar belakang, warna, dan tidak mempengaruhi tampilan elemen.
       - Margin dapat digunakan untuk memberi elemen ruang di atas, bawah, kanan, atau kiri.
-   Padding
+   - Padding
       - Padding adalah area di sekitar konten.
       - Fungsinya adalah mengatur jarak antara konten elemen dan border elemen tersebut.
       - Padding dapat memiliki warna atau latar belakang yang berbeda, sehingga memengaruhi tampilan elemen dan area di sekitarnya.
@@ -545,7 +545,7 @@ Kelas   : PBP A
 | Memerlukan pembelajaran yang lebih dalam karena memerlukan pemahaman terhadap kelas-kelas utilitas yang ada dan cara menggabungkannya. |  Lebih cepat untuk dipelajari karena dapat langsung menggunakan komponen yang sudah ada tanpa perlu menggabungkan banyak kelas utilitas. |
 
    - Sebaiknya menggunakan Bootstrap jika ingin mengembangkan *website* dalam jangka waktu yang cepat serta memiliki tampilan yang seragam serta terstruktur. Ini dapat digunakan jika pembuat web memiliki waktu terbatas atau ingin tampilan mirip dengan tema Bootstrap yang sudah ada saja.
-   - Tailwind menjadi pilihan yang baik jika menginginkan fleksibilitas tinggi dalam merancang tampilan. Dapat digunakan jika pembuat web ingin mengatur web dengan tampilan yang unik atau berbeda antara halaman-halaman.
+   - Menggunakan tailwind jika menginginkan fleksibilitas tinggi dalam merancang tampilan. Dapat digunakan jika pembuat web ingin mengatur web dengan tampilan yang unik atau berbeda antara halaman-halaman.
 
 ### Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework
 
