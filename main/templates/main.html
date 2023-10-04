@@ -1,74 +1,213 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Vineyard</h1>
+<style>
+    .navbar-brand {
+        color: #e8dcd5;
+    }
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
+    .jumbotron {
+        background-color: rgba(232, 220, 213, 0.7); 
+        padding: 2rem 1rem;
+        text-align: center;
+        height: 30vh;
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        position: relative;
+    }
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
+    .jumbotron::before {
+        content: "";
+        background-image: url('media/item_images/vineyard2.jpeg'); 
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        filter: blur(2px); 
+        z-index: -1; 
+    }
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Description</th>
-    </tr>
+    .title{
+        font-weight: 800;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    .caption {
+        font-size: 24px;
+        color: #e8dcd5;
+    }
 
-    {% for product in products %}
-        <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.amount}}</td>
-            <td>{{product.description}}</td>
-            <td> <a href="{% url 'main:add_product' product.id %}">
-                <button>
-                    Add
-                </button>
-            </a>
-        </td>
+    .product-card {
+        display: flex;
+        background-color: #e8dcd5;
+        border: 1px solid #e0e0e0;
+        margin: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        height: 210px;
+        width: 100%;
+    }
 
-        <td> <a href="{% url 'main:remove_product' product.id %}">
-                <button>
-                    Reduce
-                </button>
-            </a>
-        </td>   
-        
-        <td> <a href="{% url 'main:delete_product' product.id %}">
-                <button>
-                    Delete Product
-                </button>
-            </a>
-        </td>
-        </tr>
-    {% endfor %}
-</table>
+    .product-image {
+        flex: 1;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-<br />
+    .product-image img {
+        max-width: 100%;
+        max-height: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+    }
 
-{% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+    .product-details {
+        flex: 2;
+    }
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+    .product-name {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
 
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
+    .product-description {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+    .product-amount {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .product-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .product-button-dark,
+    .product-button-light {
+        padding: 3px 8px;
+        border: none;
+        cursor: pointer;
+        margin: 2px;
+        border-radius: 10px;
+    }
+
+    .product-button-dark {
+        background-color: #141519;
+        color: #e8dcd5;
+    }
+
+    .product-button-light {
+        background-color: #e8dcd5;
+        color: #141519;
+    }
+
+    .product-price {
+        font-size: 20px;
+        color: #141519;
+        margin-bottom: 10px;
+    }
+
+    .product-actions a {
+        text-decoration: none;
+    }
+
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .last-login {
+        color: #e8dcd5;
+    }
+
+    img {
+        max-height: 80%;
+    }
+    body {
+        background: #141519;
+    }
+</style>
+
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg shadow" style = "background-color: #141519">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1;">{{name}}</span>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:logout' %}">
+                        <button class="btn btn-outline-secondary" style="color: #e8dcd5;" type="submit">Logout</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End of NavBar-->
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <div class="jumbotron-content">
+            <h1 class="title">VINEYARD</h1>
+            <hr class="caption">
+            <p>Introduce an excellent collection of white and red wine.</p>
+        </div>
+    </div>
+    <!-- End of Jumbotron -->
+
+    <!-- Card -->
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-6 col-lg-6 col-sm-12">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ product.image.url }} " alt="Product Image">
+                    </div>
+                    <div class="product-details">
+                        <div class="product-name">{{ product.name }}</div>
+                        <div class="product-description">{{ product.description }}</div>
+                        <div class="product-amount">In Stock: {{ product.amount }}</div>
+                    </div>
+                    <div class="product-actions mt-auto">
+                        <a href="{% url 'main:add_product' product.id %}">
+                            <button class="product-button-dark">+</button>
+                        </a>
+                        <a href="{% url 'main:remove_product' product.id %}">
+                            <button class="product-button-dark">-</button>
+                        </a>
+                        <a href="{% url 'main:edit_product' product.pk %}">
+                            <button class="product-button-dark">Edit</button>
+                        </a>
+                        <a href="{% url 'main:delete_product' product.id %}">
+                            <button class="product-button-dark">Delete Product</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
+    <!-- End of Card -->
+
+    <!-- Add more product -->
+    <div class="center-content">
+        <p class="last-login">Last login: {{ last_login }}</p>
+        <a href="{% url 'main:create_product' %}">
+            <button class="product-button-light">Add New Product</button>
+        </a>
+    </div>
 
 {% endblock content %}

@@ -205,7 +205,8 @@ Kelas   : PBP A
    ![show_json_by_id](jsonbyid.png)
 </details>
 
-## Tugas 4
+<details>
+<summary><b> Tugas 4 <b></summary>
 
 ### Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
 
@@ -482,3 +483,146 @@ Kelas   : PBP A
 
 ### Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
    - Pada penggunaan cookies dalam pengembangan web, tetap ada risiko potensial yang harus diwaspadai seperti pencurian data pengguna. Jika sebuah data penting seperti kata sandi atau informasi keuangan disimpan dalam cookies tanpa enkripsi yang memadai, akan menjadi target pencurian data oleh pihak yang tidak bertanggung jawab. Selain itu, ada juga yang disebut dengan serangan CSRF, yaitu jenis serangan keamanan siber berupa penipuan atau pemalsuan permintaan ke sebuah website melalui website yang sedang pengguna digunakan secara tidak sadar. Serangan ini memanfaatkan pengguna yang sudah login ke suatu situs dan masih memiliki sesi atau kredensial otentifikasi yang masih berlaku.
+</details>
+
+## Tugas 5
+
+### Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+   - Selector Universal (*)
+      Untuk memilih semua elemen dalam dokumen HTML,jika ingin mengatur nilai default untuk semua elemen.
+   - Selector Elemen
+      Memilih elemen berdasarkan jenis elemennya (<p>, <h1>, <div>), Mengganti atau menyesuaikan gaya elemen secara global berdasarkan tipe elemen.
+   - Selector Kelas (.nama-kelas)
+      Memilih berdasarkan nama kelas yang diberikan, untuk mengganti atau menyesuaikan gaya elemen yang memiliki kelas tertentu.
+   - Selector ID (#id-elemen)
+      Memilih elemen berdasarkan ID uniknya, jika perlu menargetkan elemen tertentu untuk modifikasi khusus.
+   - Selector Pseudo-class (:hover, :active, :focus, dll.)
+      Memilih elemen berdasarkan keadaannya, untuk memberikan gaya interaktif kepada elemen saat pengguna berinteraksi dengan halaman.
+   - Selector Pseudo-element (::before, ::after, ::first-line, dll.)
+      Untuk menambahkan konten atau mengubah gaya elemen tertentu dalam elemen yang ada, untuk menambahkan atau mengubah tampilan elemen tertentu tanpa perlu menambahkan elemen tambahan di HTML.
+   - Selector Kombinasi (potongan div p, div > p, div + p, div ~ p)
+      Memilih elemen berdasarkan hubungan hierarki atau tetangga mereka.
+
+### Jelaskan HTML5 Tag yang kamu ketahui.
+   - `<!DOCTYPE html>`: tag untuk menentukan tipe dokumen.
+   - `<html>`: tag untuk membuat sebuah dokumen HTML
+   - `<title>`	: judul dari sebuah halaman.
+   - `<body>` : tubuh dari sebuah halaman.
+   - `<h1> to <h6>` : membuat heading dengan ukuran tertentu.
+   - `<p>` : membuat paragraf.
+   - `<br>`	: memasukan baris kosong.
+   - `<hr>`	: membuat garis lurus.
+   - `<!--...-->`	: tag untuk membuat komentar.
+   - `<link>` : menghubungkan halaman HTML dengan berkas lain.
+   - `<style>` : tempat menulis CSS untuk mengatur tampilan halaman web.
+   - `<nav>` : tempat untuk tautan navigasi atau menu.
+   - `<main>` : tempat untuk konten utama halaman web.
+   - `<section>` :m engelompokkan konten, seperti bagian dari halaman.
+   - `<a>` : tautan atau hyperlink yang mengarahkan ke halaman web lain.
+   - `<img>` : menampilkan gambar di halaman web.
+   - `<ul>, <ol>, <li>` : untuk membuat daftar, seperti daftar tanpa urutan `(<ul>)`, daftar terurut `(<ol>)` : dan *item* dalam daftar `(<li>)`.
+   - `<div>` : untuk mengelompokkan elemen-elemen HTML untuk pengaturan tampilan.
+   - `<button>` : untuk menambahkan tombol.
+
+###  Jelaskan perbedaan antara margin dan padding.
+   - Margin
+      - Margin adalah area di sekitar *border*.
+      - Fungsi margin adalah untuk mengontrol jarak antara elemen dengan elemen lain di sekitarnya, sehingga mempengaruhi tata letak keseluruhan elemen.
+      - Margin biasanya tidak memiliki latar belakang, warna, dan tidak mempengaruhi tampilan elemen.
+      - Margin dapat digunakan untuk memberi elemen ruang di atas, bawah, kanan, atau kiri.
+   Padding
+      - Padding adalah area di sekitar konten.
+      - Fungsinya adalah mengatur jarak antara konten elemen dan border elemen tersebut.
+      - Padding dapat memiliki warna atau latar belakang yang berbeda, sehingga memengaruhi tampilan elemen dan area di sekitarnya.
+      - Padding juga mempengaruhi tampilan konten di dalam elemen, seperti teks atau gambar.
+
+### Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+| Tailwind | Bootstrap |
+| ------- | ------- |
+| Tailwind CSS membuat tampilan dengan menggabungkan kelas utilitas yang sudah ada sebelumnya. | Bootstrap menggunakan gaya dan komponen yang sudah ada sebelumnya, sehingga bisa langsung menggunakannya tanpa harus membuat tampilan dari awal. |
+| File CSS lebih kecil dibandingkan Bootstrap dan hanya memuat kelas-kelas utilitas yang digunakan. | File Bootstrap karena termasuk banyak komponen yang telah didefinisikan sebelumnya. |
+| Memberikan tingkat fleksibilitas dan adaptabilitas yang tinggi terhadap proyek. | Bootstrap menghasilkan tampilan yang konsisten di seluruh proyek karena menggunakan komponen yang sudah didefinisikan. |
+| Memerlukan pembelajaran yang lebih dalam karena memerlukan pemahaman terhadap kelas-kelas utilitas yang ada dan cara menggabungkannya. |  Lebih cepat untuk dipelajari karena dapat langsung menggunakan komponen yang sudah ada tanpa perlu menggabungkan banyak kelas utilitas. |
+
+   - Sebaiknya menggunakan Bootstrap jika ingin mengembangkan *website* dalam jangka waktu yang cepat serta memiliki tampilan yang seragam serta terstruktur. Ini dapat digunakan jika pembuat web memiliki waktu terbatas atau ingin tampilan mirip dengan tema Bootstrap yang sudah ada saja.
+   - Tailwind menjadi pilihan yang baik jika menginginkan fleksibilitas tinggi dalam merancang tampilan. Dapat digunakan jika pembuat web ingin mengatur web dengan tampilan yang unik atau berbeda antara halaman-halaman.
+
+### Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework
+
+#### Menambahkan Bootstrap ke aplikasi
+   - Pada `templates/base.html' tambahkan kode berikut.
+      ```py
+      <head>
+         {% block meta %}
+            ...
+         {% endblock meta %}
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+      </head>
+      ```
+
+#### Membuat Navigation Bar
+   - Membuat navigation bar dengan implementasi kode sebagai berikut.
+      ```py
+          <nav class="navbar navbar-expand-lg shadow" style = "background-color: #141519">
+            <div class="container">
+                  <span class="navbar-brand mb-0 h1;">{{name}}</span>
+                  <ul class="navbar-nav ms-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:logout' %}">
+                              <button class="btn btn-outline-secondary" style="color: #e8dcd5;" type="submit">Logout</button>
+                        </a>
+                     </li>
+                  </ul>
+            </div>
+         </nav>
+      ```
+   
+#### Membuat header
+   - Membuat header web dengan menggunakan Bootstrap.
+   ```py
+    <div class="jumbotron">
+        <div class="jumbotron-content">
+            <h1 class="title">VINEYARD</h1>
+            <hr class="caption">
+            <p>Introduce an excellent collection of white and red wine.</p>
+        </div>
+    </div>
+   
+   ```
+#### Kustomisasi halaman login, register, dan tambah inventori
+   - Kustomisasi halaman daftar inventori menggunakan komponen Bootstrap yaitu Card.
+   ```py
+   <div class="container">
+      <div class="row">
+         {% for product in products %}
+         <div class="col-md-6 col-lg-6 col-sm-12">
+               <div class="product-card">
+                  <div class="product-image">
+                     <img src="{{ product.image.url }} " alt="Product Image">
+                  </div>
+                  <div class="product-details">
+                     <div class="product-name">{{ product.name }}</div>
+                     <div class="product-description">{{ product.description }}</div>
+                     <div class="product-amount">In Stock: {{ product.amount }}</div>
+                  </div>
+                  <div class="product-actions mt-auto">
+                     <a href="{% url 'main:add_product' product.id %}">
+                           <button class="product-button-dark">+</button>
+                     </a>
+                     <a href="{% url 'main:remove_product' product.id %}">
+                           <button class="product-button-dark">-</button>
+                     </a>
+                     <a href="{% url 'main:edit_product' product.pk %}">
+                           <button class="product-button-dark">Edit</button>
+                     </a>
+                     <a href="{% url 'main:delete_product' product.id %}">
+                           <button class="product-button-dark">Delete Product</button>
+                     </a>
+                  </div>
+               </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>   
+   ``` 

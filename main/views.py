@@ -26,7 +26,7 @@ def show_main(request):
     return render(request, "main.html", context)
 
 def create_product(request):
-    form = ProductForm(request.POST or None)
+    form = ProductForm(request.POST , request.FILES or None)
 
     if form.is_valid() and request.method == "POST":
         product = form.save(commit=False)
@@ -87,27 +87,42 @@ def logout_user(request):
     return response
 
 def add_product(request, id):
-    product = get_object_or_404(Product, pk=id)
-    if request.method == "GET" :
-        product.amount += 1
-        product.save()
-        messages.success(request, product.name + '  has been successfully added!')
+    product = Product.objects.get(pk = id)
+    product.amount += 1
+    product.save()
+    messages.success(request, product.name + '  has been successfully added!')
     return HttpResponseRedirect(reverse('main:show_main'))
 
 def remove_product(request, id):
-    product = get_object_or_404(Product, pk=id)
-    if request.method == "GET" :
-        if product.amount == 1 :
-            product.delete()
-        if product.amount > 1 :
-            product.amount -= 1
-            product.save()
-        messages.success(request, product.name + ' has been successfully reduced!')
+    product = Product.objects.get(pk = id)
+    if product.amount == 1 :
+        product.delete()
+    if product.amount > 1 :
+        product.amount -= 1
+        product.save()
+    messages.success(request, product.name + ' has been successfully reduced!')
     return HttpResponseRedirect(reverse('main:show_main'))
 
 def delete_product(request, id):
-    product = get_object_or_404(Product, pk=id)
-    if request.method == "GET" :
-        product.delete()
-        messages.success(request, product.name + ' has been successfully deleted!')        
+    # Get data berdasarkan ID
+    product = Product.objects.get(pk = id)
+    # Hapus data
+    product.delete()
+    # Kembali ke halaman awal
+    messages.success(request, product.name + ' has been successfully deleted!')
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def edit_product(request, id):
+    # Get product berdasarkan ID
+    product = Product.objects.get(pk = id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
