@@ -1,147 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<style>
-    .navbar-brand {
-        color: #e8dcd5;
-    }
-
-    .jumbotron {
-        background-color: rgba(232, 220, 213, 0.7); 
-        padding: 2rem 1rem;
-        text-align: center;
-        height: 30vh;
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        position: relative;
-    }
-
-    .jumbotron::before {
-        content: "";
-        background-image: url('media/item_images/vineyard2.jpeg'); 
-        background-size: cover;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        filter: blur(2px); 
-        z-index: -1; 
-    }
-
-    .title{
-        font-weight: 800;
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
-
-    .caption {
-        font-size: 24px;
-        color: #e8dcd5;
-    }
-
-    .product-card {
-        display: flex;
-        background-color: #e8dcd5;
-        border: 1px solid #e0e0e0;
-        margin: 10px;
-        padding: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        height: 210px;
-        width: 100%;
-    }
-
-    .product-image {
-        flex: 1;
-        margin-right: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .product-image img {
-        max-width: 100%;
-        max-height: 100%;
-        height: auto;
-        border: 1px solid #ccc;
-    }
-
-    .product-details {
-        flex: 2;
-    }
-
-    .product-name {
-        font-weight: bold;
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    .product-description {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .product-amount {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    .product-buttons {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .product-button-dark,
-    .product-button-light {
-        padding: 3px 8px;
-        border: none;
-        cursor: pointer;
-        margin: 2px;
-        border-radius: 10px;
-    }
-
-    .product-button-dark {
-        background-color: #141519;
-        color: #e8dcd5;
-    }
-
-    .product-button-light {
-        background-color: #e8dcd5;
-        color: #141519;
-    }
-
-    .product-price {
-        font-size: 20px;
-        color: #141519;
-        margin-bottom: 10px;
-    }
-
-    .product-actions a {
-        text-decoration: none;
-    }
-
-    .center-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin: 10px;
-    }
-
-    .last-login {
-        color: #e8dcd5;
-    }
-
-    img {
-        max-height: 80%;
-    }
-    body {
-        background: #141519;
-    }
-</style>
-
     <!-- NavBar -->
     <nav class="navbar navbar-expand-lg shadow" style = "background-color: #141519">
         <div class="container">
@@ -169,45 +28,54 @@
 
     <!-- Card -->
     <div class="container">
-        <div class="row">
-            {% for product in products %}
-            <div class="col-md-6 col-lg-6 col-sm-12">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="{{ product.image.url }} " alt="Product Image">
-                    </div>
-                    <div class="product-details">
-                        <div class="product-name">{{ product.name }}</div>
-                        <div class="product-description">{{ product.description }}</div>
-                        <div class="product-amount">In Stock: {{ product.amount }}</div>
-                    </div>
-                    <div class="product-actions mt-auto">
-                        <a href="{% url 'main:add_product' product.id %}">
-                            <button class="product-button-dark">+</button>
-                        </a>
-                        <a href="{% url 'main:remove_product' product.id %}">
-                            <button class="product-button-dark">-</button>
-                        </a>
-                        <a href="{% url 'main:edit_product' product.pk %}">
-                            <button class="product-button-dark">Edit</button>
-                        </a>
-                        <a href="{% url 'main:delete_product' product.id %}">
-                            <button class="product-button-dark">Delete Product</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+        <div class="row" id="product_table">
         </div>
     </div>    
     <!-- End of Card -->
 
+    <!-- Modal Form Add Product AJAX -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="col-form-label">Image:</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn" id="button_add" style="background-color: #141519; color: #FFF" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Modal Form Add Product AJAX -->
+
     <!-- Add more product -->
     <div class="center-content">
         <p class="last-login">Last login: {{ last_login }}</p>
-        <a href="{% url 'main:create_product' %}">
-            <button class="product-button-light">Add New Product</button>
-        </a>
+        <button type="button" class="product-button-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
     </div>
+    <!-- End of Add more product -->
 
 {% endblock content %}

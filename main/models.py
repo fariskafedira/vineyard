@@ -9,4 +9,4 @@ class Product(models.Model):
     amount = models.IntegerField()
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='item_images/')
+    image = models.ImageField(upload_to='image/')

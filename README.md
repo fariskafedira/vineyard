@@ -485,7 +485,8 @@ Kelas   : PBP A
    - Pada penggunaan cookies dalam pengembangan web, tetap ada risiko potensial yang harus diwaspadai seperti pencurian data pengguna. Jika sebuah data penting seperti kata sandi atau informasi keuangan disimpan dalam cookies tanpa enkripsi yang memadai, akan menjadi target pencurian data oleh pihak yang tidak bertanggung jawab. Selain itu, ada juga yang disebut dengan serangan CSRF, yaitu jenis serangan keamanan siber berupa penipuan atau pemalsuan permintaan ke sebuah website melalui website yang sedang pengguna digunakan secara tidak sadar. Serangan ini memanfaatkan pengguna yang sudah login ke suatu situs dan masih memiliki sesi atau kredensial otentifikasi yang masih berlaku.
 </details>
 
-## Tugas 5
+<details>
+<summary><b> Tugas 5 <b></summary>
 
 ### Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
    - Selector Universal (*)
@@ -625,4 +626,154 @@ Kelas   : PBP A
          {% endfor %}
       </div>
    </div>   
-   ``` 
+   ```
+</details>
+
+## Tugas 6
+
+#### Jelaskan perbedaan antara *asynchronous programming* dengan *synchronous programming*.
+   - *Synchronous programming*
+      - Kode non-blokir, program bisa melanjutkan tugas lain tanpa menunggu.
+      - Program dapat terasa lambat jika ada tugas yang memakan waktu.
+      - Dalam manajemen tugas, tugas dieksekusi berdasarkan urutan.
+
+   - *Asynchronous programming*
+      - Kode bersifat bloking, program akan menunggu hasil sebelum melanjutkan.
+      - Meningkatkan responsivitas aplikasi, bahkan jika ada tugas yang memakan waktu.
+      - Menggunakan callback atau promise untuk mengatur tugas.
+
+#### Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+   - Paradigma event-driven programming adalah cara pemrograman di mana program merespons peristiwa yang terjadi, seperti klik tombol atau respons dari server. 
+   - Contohnya dalam tugas ini:
+      - Klik *button* `Delete` pada aplikasi web yang memanggil fungsi javascript `deleteProduct(productId)` dengan mengirimkan ID produk yang akan dihapus.
+      - Dalam fungsi `deleteProduct` terdapat permintaan AJAX (`fetch`) yang dikirimkan ke URL untuk menghapus produk kemudian menunggu respons dari server.
+      - Lalu menggunakan `.then` untuk merespons hasil respons dari server.
+
+#### Jelaskan penerapan *asynchronous programming* pada AJAX.
+   - *Asynchronous programming* dalam AJAX memungkinkan pengiriman dan penerimaan data dari server tanpa harus melakukan *refresh* halaman web. Sehingga, program tetap aktif dan responsif selama menunggu data dari server. Pemanfaatan fungsi callback atau promise untuk menentukan tindakan yang harus diambil saat data telah diterima, sehingga aplikasi web tetap interaktif dan berjalan secara efisien.
+   
+#### Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+   - Fetch API
+      - Bagian dari JavaScript, tidak perlu mengunduh pustaka tambahan.
+      - Mendukung promises, sesuai untuk *asynchronous programming*.
+      - Cocok untuk operasi AJAX sederhana.
+      - Lebih banyak kontrol dan fleksibilitas dalam mengelola permintaan dan respons.
+
+   - jQuery
+      - Didesain untuk mengatasi perbedaan antar browser, berguna untuk mendukung browser lama.
+      - Sintaks mudah dipahami dan digunakan.
+      - Ekosistem yang luas dengan banyak plugin yang tersedia.
+
+   Menurut saya, teknologi mana yang lebih baik untuk digunakan tergantung pada kebutuhan proyek dan preferensi pengguna. Fetch API lebih baik digunakan untuk mengembangkan aplikasi web modern dan berfokus pada performa. Sedangkan, jika harus memperhitungkan kompatibilitas dengan browser lama dan memiliki sintaks yang lebih mudah dipahami, maka dapat menggunakan jQuery.
+
+#### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step.
+
+#### AJAX GET
+   - Membuat fungsi pada `views.py` yang mengembalikan data JSON, berfungsi untuk menampilkan data produk pada HTML dengan menggunakan `fetch`.
+   - Penerapan fungsi dilakukan seperti:
+      ```py
+      def get_product_json(request):
+         product_item = Product.objects.all()
+         return HttpResponse(serializers.serialize('json', product_item))
+      ```
+   - Impor fungsi `get_product_json` ke dalam urls.py dan tambahkan *path url* pada urlpatterns.
+   - Buat fungsi `getProducts()` pada javascript  untuk melakukan permintaan secara *asynchronous* ke data JSON menggunakan API `fetch()`.
+      ```py
+         async function getProducts() {
+            return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+         }
+      ```
+   - Setelah data di-*fetch*, fungsi then() digunakan untuk mengonversi data JSON menjadi objek JavaScript.
+   - Membuat fungsi `refreshProducts()` untuk me-*refresh* data produk secara *asynchronous*.
+
+####  AJAX POST
+   - Buatlah sebuah *button* untuk membuka sebuah modal dengan form untuk menambahkan product.
+      ```py
+      <button type="button" class="product-button-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+      ```
+   - Buat fungsi `add_product_ajax` pada views.py untuk menambahkan produk baru ke dalam basis data dengan AJAX.
+      ```py
+      @csrf_exempt
+      def add_product_ajax(request):
+         if request.method == 'POST':
+            name = request.POST.get("name")
+            amount = request.POST.get("amount")
+            description = request.POST.get("description")
+            image = request.FILES.get("image")
+            user = request.user
+
+            new_product = Product(name=name, amount=amount, description=description, user=user, image=image)
+            new_product.save()
+
+            return HttpResponse(b"CREATED", status=201)
+
+         return HttpResponseNotFound()
+      ```
+   - Lakukan *routing* fungsi `add_product_ajax` pada berkas `urls.py`
+      ```py
+      path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
+      ```
+   - Buat modal sebagai *form* untuk menambahkan produk
+      ```py
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                     <form id="form" onsubmit="return false;">
+                           {% csrf_token %}
+                           <div class="mb-3">
+                              <label for="name" class="col-form-label">Name:</label>
+                              <input type="text" class="form-control" id="name" name="name"></input>
+                           </div>
+                           <div class="mb-3">
+                              <label for="amount" class="col-form-label">Amount:</label>
+                              <input type="number" class="form-control" id="amount" name="amount"></input>
+                           </div>
+                           <div class="mb-3">
+                              <label for="description" class="col-form-label">Description:</label>
+                              <textarea class="form-control" id="description" name="description"></textarea>
+                           </div>
+                           <div class="mb-3">
+                              <label for="image" class="col-form-label">Image:</label>
+                              <input type="file" class="form-control" id="image" name="image">
+                           </div>
+                     </form>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     <button type="button" class="btn" id="button_add" style="background-color: #141519; color: #FFF" data-bs-dismiss="modal">Add Product</button>
+                  </div>
+               </div>
+         </div>
+      </div>
+      ```
+   - Buat fungsi JavaScript `addProduct()` untuk menambahkan data berdasarkan *input* ke basis data secara AJAX.
+      ```py
+      function addProduct() {
+         fetch("/create-product-ajax/", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+         }).then(refreshProducts)
+
+         document.getElementById("form").reset()
+         return false
+      }
+      ```
+   - Tambahkan fungsi `onclick` pada *button* `Add Product` untuk menjalankan fungsi `addProduct()`.
+      ```py
+      document.getElementById("button_add").onclick = addProduct
+      ```
+
+#### Melakukan perintah collectstatic.
+   - Pada `settings.py` tambahkan kode berikut.
+      ```py
+      STATICFILES_DIRS = [BASE_DIR / "static"]
+      ```
+   - Jalankan perintah berikut pada terminal.
+      ```py
+      python manage.py collectstatic
+      ```
