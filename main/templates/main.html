@@ -1,6 +1,145 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<style>
+    .navbar-brand {
+        color: #e8dcd5;
+    }
+
+    .jumbotron {
+        background-color: rgba(232, 220, 213, 0.7); 
+        padding: 2rem 1rem;
+        text-align: center;
+        height: 30vh;
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        position: relative;
+    }
+
+    .jumbotron::before {
+        content: "";
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        filter: blur(2px); 
+        z-index: -1; 
+    }
+
+    .title{
+        font-weight: 800;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .caption {
+        font-size: 24px;
+        color: #e8dcd5;
+    }
+
+    .product-card {
+        display: flex;
+        background-color: #e8dcd5;
+        border: 1px solid #e0e0e0;
+        margin: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        height: 210px;
+        width: 100%;
+    }
+
+    .product-image {
+        flex: 2;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-image img {
+        max-width: 100%;
+        max-height: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+    }
+
+    .product-details {
+        flex: 2;
+    }
+
+    .product-name {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .product-description {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .product-amount {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .product-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .product-button-dark,
+    .product-button-light {
+        padding: 3px 8px;
+        border: none;
+        cursor: pointer;
+        margin: 2px;
+        border-radius: 10px;
+    }
+
+    .product-button-dark {
+        background-color: #141519;
+        color: #e8dcd5;
+    }
+
+    .product-button-light {
+        background-color: #e8dcd5;
+        color: #141519;
+    }
+
+    .product-actions a {
+        text-decoration: none;
+    }
+
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
+    }
+
+    .last-login {
+        color: #e8dcd5;
+    }
+
+    .modal-content {
+        background: #e8dcd5;
+    }
+
+    img {
+        max-height: 80%;
+    }
+
+    body {
+        background: #141519;
+    }
+</style>
     <!-- NavBar -->
     <nav class="navbar navbar-expand-lg shadow" style = "background-color: #141519">
         <div class="container">
@@ -21,7 +160,7 @@
         <div class="jumbotron-content">
             <h1 class="title">VINEYARD</h1>
             <hr class="caption">
-            <p>Introduce an excellent collection of white and red wine.</p>
+            <p>Harvested with Care, Delivered with Freshness: Your Online Oasis for Farm-to-Table Goodness!</p>
         </div>
     </div>
     <!-- End of Jumbotron -->
@@ -92,7 +231,7 @@
                 <div class="col-md-6 col-lg-6 col-sm-12">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="static/${item.fields.image}" alt="Product Image">
+                            <img src="media_root/${item.fields.image}" alt="Product Image">
                         </div>
                         <div class="product-details">
                             <div class="product-name">${item.fields.name}</div>

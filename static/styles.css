@@ -15,7 +15,6 @@
 
 .jumbotron::before {
     content: "";
-    background-image: url('image/vineyard2.jpeg'); 
     background-size: cover;
     height: 100%;
     width: 100%;
