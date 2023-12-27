@@ -215,6 +215,13 @@
         <p class="last-login">Last login: {{ last_login }}</p>
         <button type="button" class="product-button-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
     </div>
+
+    <a href="{% url 'main:create_product' %}">
+        <button class="button">
+            Add New Item
+        </button>
+    </a>
+
     <!-- End of Add more product -->
 
     <script>
